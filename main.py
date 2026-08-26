@@ -57,25 +57,30 @@ def plotar_comunidades(G, rotulos_finais, caminho):
     # Funcao que gera e exibe o grafico colorido das comunidades.
     print("\nGráfico gerado. Feche-o para encerrar.")
     
-    plt.figure(figsize=(8, 6))
+    # 1. Aumentamos a janela para dar mais espaço físico
+    plt.figure(figsize=(10, 8))
     
-    nome_arquivo = caminho.split('/')[-1] # Extrai apenas o nome do arquivo.
+    nome_arquivo = caminho.split('/')[-1] 
     plt.title(f"Label Propagation - {nome_arquivo}")
     
-    # Plota o grafo usando os rotulos para definir as cores.
+    # 2. Definimos posicoes com 'k' maior para espalhar os nos e evitar embolar
+    # O parametro k controla a distancia ideal entre os nos (quanto maior, mais espalhado)
+    pos = nx.spring_layout(G, k=0.3, seed=42) 
+    
     nx.draw(
         G, 
+        pos=pos, # Passamos as posicoes calculadas com espacamento
         with_labels=True, 
         node_color=rotulos_finais, 
         cmap=plt.cm.Set2,
-        node_size=800,
+        node_size=700,
         font_color="black",
         font_weight="bold"
     )
     plt.show()
 
 if __name__ == "__main__":
-    caminho = 'data/rede1_duas_comunidades.csv'
+    caminho = 'data/zachary.csv'
     print(f"Processando: {caminho}")
     
     G, A, lista_nos = carregar_grafo(caminho)
