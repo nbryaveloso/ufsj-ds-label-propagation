@@ -4,7 +4,7 @@
 
 **Passo 1: Clonar o repositório**
 ```bash
-git clone [https://github.com/nbryaveloso/ufsj-ds-label-propagation.git](https://github.com/nbryaveloso/ufsj-ds-label-propagation.git)
+git clone https://github.com/nbryaveloso/ufsj-ds-label-propagation.git
 cd ufsj-ds-label-propagation
 ```
 
